@@ -175,15 +175,59 @@ Guía para operar los GPIO del NodeMCU con Thingsboard
 
 ![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Things15.png?raw=true)
 
-#### Después nos dirigimos al IDE de Arduino y en la parte de File-
+### Configurando el IDE de Arduino, Código y el ESP.
+
+#### Después nos dirigimos al IDE de Arduino y en la parte de File--Preferences y pegamos lo siguiente:
+
+	http://arduino.esp8266.com/stable/package_esp8266com_index.json
+
+#### Le damos al OK.
+
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Arduino.png?raw=true)
+
+#### Ahora nos dirigimos a Tools--Boards--Boards Manager y escribimos lo siguiente:
+
+	esp8266
+
+#### Cabe mencionar que la versión es la 2.3.0
+
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Arduino1.png?raw=true)
+
+#### En Tools--Boards--Esp8266 Modules y elegimos el módulo que estamos usando.
+
+#### Instalamos las siguientes librerías y en esas versiones, para actualizar a las más recientes es necesario ver los cambios en cada versión y adaptarlas a la actual, pero si lo que que se necesita es sólo una prueba no estricta, se instalará las siguientes:
+
+#### Sketch--Include Library--Manage Libraries
+
+	PubSubClient 2.6
+	ArduinoJson 5.8.0
+
+#### 
+
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Arduino2.png?raw=true)
+
+#### Ahora pegamos el código que se encuentra en la carpeta SRC y modificamos lo que se indica en las flechas:
+
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Arduino3.png?raw=true)
+
+#### El TOKEN es del dispositivo que creamos en Thingsboard al iniciar todo y se refiere a la segunda imagen del paso 5 de esta guía.
+
+#### El thingsboardServer se deja así si se está usando la versión Demo de Thingsboard, si no es así, entonces el servidor cambiará, por ejemplo, para esta prueba se está usando un servidor de Thingsboard instalado de manera local y no la Demo.
+
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Servidor.png?raw=true)
 
 #### Ahora lo que sigue, es conectar nuestro ESP adecuadamente y "correr" el programa para después ir a Thingsboard y en la parte de Dashboard ver como de estar "off line" pasa a estar en modo online pero sin indicarnos, simplemente lo sabemos porque el "off line" desaparece y es ahí cuando podemos hacer uso de los GPIO y ver como se acivan los leds y desactivan, según lo que indicamos en el panel, es necesario actualizar la página en Thingsboard para poder establecer conexión y que desaparezca el "off line".
 
+#### Para cargar el código al ESP es necesario hacer que el ESP se encuentre en modo "flasheo", para eso, justo antes de subir el programa se debe mantener presionado el botón FLASH que tiene el ESP y soltarlo hasta cuando empiece a parpadear el Led del ESP, en ese momento se ha establecido la conexión.
+
+#### Finalmente, sabemos que se estableció la conexión y que modificamos adecuadamente en el código porque el "off line" desaparece y si movemos los interruptores en el panel de visualización se puede ver como cambian, físicamente los Led's se activan y desactivan, según lo que se hace en el panel.
+
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Final.png?raw=true)
 
 ------------
 
 #### Vínculo de un video donde se ve el funcionamiento:
 
-[**Funcionamiento**](https://youtu.be/3xD2gJ1fan0)
+[**Pendiente**]()
 
-#### En este ejemplo se agregaron más leds pero no todos los GPIO's, sólo algunos, el código sufrirá modificaciones, según lo que desea hacer cada usuario, partiendo de este ejemplo, será fácil entender como funciona.
+#### El código sufrirá modificaciones, según lo que desea hacer cada usuario, partiendo de este ejemplo, será fácil entender como funciona.
