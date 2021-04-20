@@ -50,7 +50,7 @@ Guía para operar los GPIO del NodeMCU con Thingsboard
 
 ### Materiales:
 
-**1. NodeMCU-ESP8266 : se usará el módulo NodeMCU.**
+**1. ESP-8266 : se usará el módulo NodeMCU.**
 
 **2. 2 Led's**
 
@@ -58,7 +58,7 @@ Guía para operar los GPIO del NodeMCU con Thingsboard
 
 **4. 2 cables de puente hembra a macho.**
 
-**5. Placa de pruebas (protoboard).
+**5. Placa de pruebas (protoboard).**
 
 #### La aplicación consiste en un único código en el IDE de Arduino que está bien documentado. Es necesario modificar la constante THINGSBOARD_HOST para que coincida con su dirección IP de instalación del servidor ThingsBoard o nombre de host. Si se utiliza la versión Demo, el HOST será: “demo.thingsboard.io”.
 
@@ -68,63 +68,21 @@ Guía para operar los GPIO del NodeMCU con Thingsboard
 
 #### El código para el control de dos GPIO's del NodeMCU se encuentra en la carpeta **SRC**, el siguiente hipervínculo nos redirige al código:
 
-[**Código para un LED**](https://github.com/jwilliamsee/ControlGPIO-ESP-Thingsboard/blob/main/SRC/Codigo-ESP-Thingsboard)
+[**Código para dos LED's**](https://github.com/jwilliamsee/ControlGPIO-ESP-Thingsboard/blob/main/SRC/Codigo-ESP-Thingsboard)
 
 #### El diagrama es el siguiente:
 
-![](https://github.com/jwilliamsee/ControlGPIO-ESP-Thingsboard/blob/main/Imagenes/GPIO-Conexion.png?raw=true)
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/GPIO-Conexion.png?raw=true)
 
 #### Se hicieron las conexiones físicamente en el NodeMCU:
 
-![](https://github)
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/EnProto.png?raw=true)
 
-#### A continuación debemos instalar Nmap, nos ayudará a escanear las ip que tenemos conectados en nuestra red.
+#### Se descarga el IDE de Arduino según el SO que se encuentre usando y se instala.
 
-**NOTA: El procedimiento que aquí se describe es en Linux, para entrar en Windows, en el video de instalación de Raspbian se describe como.**
+[**IDE Arduino**](https://www.arduino.cc/en/software)
 
-##### Información a detalle sobre el proceso que a continuación se muestra, se encuentra en el siguiente vínculo:
-
-[**Escaneo de IP's**](https://itsfoss.com/how-to-find-what-devices-are-connected-to-network-in-ubuntu/)
-
-##### Usando la terminal instaleremos Nmap, nos ayudará a encontrar IP's de los equipos conectados a nuestra red, con el siguiente comando:
-
-	sudo apt install nmap
-
-##### 1. Debemos conocer la IP de nuestra red para poder escanear y llegar hasta la IP de la Raspberry. En el vínculo arriba mencionado se describe como.
-
-##### 2. Se escribe en la terminal el siguiente comando: 
-
-	nmap -sP 192.168.1.* 
-
-##### esa IP que ahí aparece es la de nuestra red, para cada caso será diferente, previamente ya debemos conocerlo y el último número se debe omitir y en su lugar escribir el símbolo de asterísco, para que nos muestre en forma de lista los equipos conectados. Por ejemplo en la IP anterior sería: 192.168.1.1 y el último 1 se sustituyó por un asterísco.
-
-##### Con la IP encontrada de la Raspberry, entraremos a la parte gráfica de nuestra Raspberry.
-
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/ipRaspberry.png?raw=true)
-
-##### 3. Ahora que ya conocemos la IP de nuestra Raspberry podemos entrar a la terminal de la misma, con ayuda del siguiente comando:
-
-	ssh pi@192.168.0.9 -X
-
-##### Y entraremos a nuestra Raspberry, un poco diferente a la forma de entrar en Windows pero prácticamente es lo mismo.
-
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/DentroDeRaspberry.png?raw=true)
-
-##### En la letra A señala la forma de entrar a nuestra terminal de la Raspberry.
-
-##### En la letra B señala un aviso que nos aparece cuando nos conectamos por primera vez la Raspberry y nos pregunta si le damos permiso o si queremos continuar con la conexión, escribimos "yes".
-
-##### En la letra C nos indica el momento donde nos pide la contraseña que usamos en Linux de nuestro equipo, para darle permiso a la conexión.
-
-##### Finalmente en la letra D nos señala que nos hemos conectado y estamos dentro de la Raspberry.
-
-##### Para salir de la terminal de la Raspberry, simplemente escribimos "exit"y será todo.
-
-##### 4. Ya que hemos entrado y después de haber instalado el intérprete Thonny en la Raspberry, abrimos con el comando:
-
-	thonny &
-
-##### Pegamos nuestro código en la interfaz de Thonny haciendo las modificaciones correspondientes del HOST y del TOKEN.
+##### Abrimos el IDE de Arduino instalado en nuestro equipo y "pegamos" nuestro código en el IDE haciendo las modificaciones correspondientes del HOST y del TOKEN.
 
 ##### El HOST es el servidor al que tenemos acceso de Thingsboard, por ejemplo en la versión de prueba o Demo, el HOST es "demo.thingsboard.io" y el TOKEN dependerá del dispositivo creado, eso se verá a continuación.
 
@@ -135,99 +93,91 @@ Guía para operar los GPIO del NodeMCU con Thingsboard
 
 ## Visualización de datos en Thingsboard
 
-##### 1. Entramos a Thingsboard. según el caso que usemos (Demo o local).
+##### 1. Entramos a Thingsboard, según el caso que usemos (Demo o local).
 
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/LoginThingsboard.png?raw=true)
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Things1.png?raw=true)
 
 ##### 2. Ya que nos encontramos dentro de THingsboard, nos dirigimos a dispositivos en el menú al lado izquierdo.
 
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/Things1.png?raw=true)
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Things2.png?raw=true)
 
 ##### 3. Nos dirigimos al botón rojo para agregar un nuevo dispositivo, en la esquina inferior derecha.
 
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/Things2.png?raw=true)
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Things3.png?raw=true)
 
 ##### 4. Escribimos un nombre y escogemos que tipo de dispositivo estamos creando.
 
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/Things3.png?raw=true)
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Things41.png?raw=true)
 
 ##### 5. Buscamos nuestro dispositvo que creamos y accedemos para copiar nuestras credenciales, posteriormente serán usadas.
 
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/Things4.png?raw=true)
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Things5.png?raw=true)
 
-
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/Things5.png?raw=true)
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Things7.png?raw=true)
 
 ##### 6. Salimos al menú principal y nos dirigimos a Dashboard, crearemos uno con el mismo nombre de nuestro dispositivo o cualquier otro nombre para poder identificarlo.
 
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/Things6.png?raw=true)
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Things6.png?raw=true)
 
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/Things7.png?raw=true)
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Things8.png?raw=true)
 
 ##### 7. Escribimos los datos correspondientes.
 
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/Things8.png?raw=true)
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/THings9.png?raw=true)
 
 ##### 8. Salimos al menú principal y nos dirigimos a las librerías de Widgets.
 
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/Things9.png?raw=true)
+##### Podemos usar el Widget que ahí viene de ejemplo con más interruptores en el panel, pero para este ejemplo usaremos el de la versión Demo de Thingsboard, cuando entramos en la versión Demo nos dirigimos a la parte de paneles y ahí vienen algunos de prueba y elegimos el del ESP: 
 
-##### 9. En las librerías, buscamos una que se llama "GPIO widgets".
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Things10-1.png?raw=true)
 
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/Things10.png?raw=true)
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Things10-2.png?raw=true)
 
-##### Lo anterior, para visualizar antes de agregar un nuevo Widget a nuestro Dashboard, cuando hemos identificado que Widget ocupamos, en este caso es el de la Raspberry, vamos al menú principal y nos vamos al Dashboard que creamos antes para agregar el nuevo widget.
+##### Buscamos el punto rojo en la esquina inferior derecha y le damos en editar el tablero, nos aparecerá opción de descarga de los tableros y le damos a esa opción.
 
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/Things11.png?raw=true)
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Things10-3.png?raw=true)
 
-##### 10. Accedemos y le damos en el botón rojo del signo (+) para agregar un widget, en caso de que tengamos el widget en nuestro equipo de manera local y si no hemos descargado nada, simplemente le damos en el recuadro del centro par aescoger nuestro widget.
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Things10-4.png?raw=true)
 
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/Things12.png?raw=true)
+##### La otra opción es de ir directamente a los Widget si se tiene instalado Thingsboard de manera local, de la siguiente forma:
 
-##### 11. Después de haber seleccionado el recuadro "ADD NEW WIDGET", seleccionamos los datos correspondientes.
+##### 9. En las librerías, buscamos una que se llama "GPIO widgets" y descargamos el panel de visualización y el de control.
 
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/Things13.png?raw=true)
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Things11-1.png?raw=true)
 
-##### 12. Después de haber seleccionado el Widget corespondiente, escribimos los datos de aacuerdo a nuestro Dashboard y Dispositivo con la intención de no confundirnos en los nombres o evitar errores se escribe el mismo o similar.
+##### Lo anterior, para visualizar antes de agregar un nuevo Widget a nuestro Dashboard, cuando hemos identificado que Widget ocupamos, en este caso es el del ESP, vamos al menú principal y nos vamos al Dashboard que creamos antes para agregar el nuevo widget.
 
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/Things14.png?raw=true)
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Things10.png?raw=true)
 
-##### 13. Al crear uno nuevo, llenamos el siguiente recuadro, para finalmente agregar nuestro nuevo panel de control.
+##### 10. Accedemos y le damos en el botón rojo del signo (+) para agregar un widget, en caso de que tengamos el widget en nuestro equipo de manera local y si no hemos descargado nada, simplemente le damos en el recuadro del centro para escoger nuestro widget. Para este caso lo hemos descargado y ahora tendremos que importar el que hemos descargado previamente.
 
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/Things15.png?raw=true)
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Things11.png?raw=true)
 
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/Things16.png?raw=true)
+##### 11. Después de haber seleccionado el recuadro "ADD NEW WIDGET", seleccionamos los datos correspondientes, nos aparecerá un aviso de que no coinciden los tableros con nuestro Dashboard creado.
 
-##### Finalmente tenemos nuestro panel de control agregado y ahí aparece que se encuentra off line, debido a que no tenemos conectado nuestra Raspbeery, cuando se logren conectar ambos, al momento de hacer pruebas, dejará de estar en modo off line.
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Things12.png?raw=true)
 
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/Things17.png?raw=true)
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Things14.png?raw=true)
 
-#### Ahora repetimos prácticamente los mismos pasos para agregar el panel de visualización.
+##### Cabe recordar que nosotros importamos los tableros que teníamos en nuestro equipo, para evitar confusión, hay que considerar los detalles en cada paso.
 
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/Things18.png?raw=true)
+##### 12. Después de haber seleccionado o importado el Widget correspondiente, escribimos los datos de acuerdo a nuestro Dashboard y Dispositivo con la intención de no confundirnos en los nombres o evitar errores se escribe el mismo o similar.
 
-##### Finalmente tendremos en nuestro Dashboard los dos paneles agregados, el de visualización y el de control
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Things14-1.png?raw=true)
 
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/Things19.png?raw=true)
+##### Editamos de acuerdo a nuestro dashboard y dispositivo.
 
-#### Ahora lo que sigue, es conectar nuestra raspberry adecuadamente, y "correr" el programa para después ir a Thingsboard y en la parte de Dashboard ver como de estar "off line" pasa a estar en modo online pero sin indicarnos, simplemente lo sabemos porque el "off line" desaparece y es ahí cuando podemos hacer uso de los GPIO y ver como se acivan los leds y desactivan, según lo que indicamos en el panel, es necesario actualizar la página en Thingsboard para poder establecer conexión y que desaparezca el "off line".
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Things14-2.png?raw=true)
 
-##### Si desea no instalar Thonny, simplemente como se mencionó antes, escribir en la terminal lo siguiente:
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Things14-3.png?raw=true)
 
-	python GPIO.py
+##### Finalmente le damos clic en la flecha y ahora tenemos nuestros paneles agregados y ahí aparece que se encuentra off line, debido a que no tenemos conectado nuestro ESP con el código funcionando, cuando se logren conectar ambos, al momento de hacer pruebas, dejará de estar en modo off line.
 
+![](https://github.com/jwilliamsee/GPIO-ESP-Things/blob/main/Imagenes/Things15.png?raw=true)
 
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/Things20.png?raw=true)
+#### Después nos dirigimos al IDE de Arduino y en la parte de File-
 
-
-------------
-
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/RaspConectada.png?raw=true)
-
-
-------------
-
-![](https://github.com/jwilliamsee/ControlLedThingsboardRasp/blob/main/imagenes/Things21.png?raw=true)
+#### Ahora lo que sigue, es conectar nuestro ESP adecuadamente y "correr" el programa para después ir a Thingsboard y en la parte de Dashboard ver como de estar "off line" pasa a estar en modo online pero sin indicarnos, simplemente lo sabemos porque el "off line" desaparece y es ahí cuando podemos hacer uso de los GPIO y ver como se acivan los leds y desactivan, según lo que indicamos en el panel, es necesario actualizar la página en Thingsboard para poder establecer conexión y que desaparezca el "off line".
 
 
 ------------
